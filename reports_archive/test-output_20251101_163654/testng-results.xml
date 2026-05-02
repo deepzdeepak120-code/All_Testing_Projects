@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-11-01T16:19:52 IST" name="Suite" finished-at="2025-11-01T16:21:56 IST" duration-ms="124077">
+    <groups>
+    </groups>
+    <test started-at="2025-11-01T16:19:52 IST" name="Test" finished-at="2025-11-01T16:21:56 IST" duration-ms="124077">
+      <class name="testCases.QuerryRaisedToReverted">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:testCases.QuerryRaisedToReverted@75d4a5c2]" started-at="2025-11-01T16:19:52 IST" name="setup" finished-at="2025-11-01T16:20:03 IST" duration-ms="11023" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[karunagaran.e@maatrum.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Maatrum@1234]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="QuerryRaisedFromLegal()[pri:0, instance:testCases.QuerryRaisedToReverted@75d4a5c2]" started-at="2025-11-01T16:20:03 IST" name="QuerryRaisedFromLegal" finished-at="2025-11-01T16:21:56 IST" duration-ms="113015" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuerryRaisedFromLegal -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:testCases.QuerryRaisedToReverted@75d4a5c2]" started-at="2025-11-01T16:21:56 IST" name="teardown" finished-at="2025-11-01T16:21:56 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method is-config="true" signature="archiveReports()[pri:0, instance:testCases.QuerryRaisedToReverted@75d4a5c2]" started-at="2025-11-01T16:21:56 IST" name="archiveReports" finished-at="2025-11-01T16:21:56 IST" duration-ms="153" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- archiveReports -->
+      </class> <!-- testCases.QuerryRaisedToReverted -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

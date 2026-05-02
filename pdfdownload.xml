@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="PDF Download Suite">
+    <test name="PDF Report Download">
+        <classes>
+            <class name="testCases.PDFReportDownloader" />
+        </classes>
+    </test>
+</suite>

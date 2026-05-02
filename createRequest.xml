@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="CreateRequestSuite">
+  <test thread-count="5" name="CreateRequestTest">
+    <parameter name="username" value="sreenath.p@maatrum.com"/>
+    <parameter name="password" value="Maatrum@123"/>
+    <classes>
+      <class name="testCases.CreateRequestTest"/>
+    </classes>
+  </test>
+</suite>

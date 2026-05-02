@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+  <parameter name="username" value="karunagaran.e@maatrum.com"/>
+    <parameter name="password" value="Maatrum@1234"/>
+     <parameter name="valuationURL" value="https://valuation-uat.maatrum.com/list"/>
+     <parameter name="controlTowerURL" value="https://control-tower-uat.maatrum.com/"/>
+    <classes>
+      <class name="testCases.AutoDevolutionFlow"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
