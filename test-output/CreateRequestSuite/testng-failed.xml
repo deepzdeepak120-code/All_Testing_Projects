@@ -3,7 +3,7 @@
 <suite name="Failed suite [CreateRequestSuite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="CreateRequestTest(failed)">
     <parameter name="password" value="Maatrum@123"/>
-    <parameter name="username" value="sreenath.p@maatrum.com"/>
+    <parameter name="username" value="VistaarCoimbatore@gmail.com"/>
     <classes>
       <class name="testCases.CreateRequestTest">
         <methods>

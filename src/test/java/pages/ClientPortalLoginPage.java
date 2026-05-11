@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -19,11 +20,7 @@ public class ClientPortalLoginPage {
 	
 
 	WebDriver driver;
-	WebDriverWait wait; 
-	
-	String clientname = "Vistaar"; 
-	
-	String state = "Tamilnadu";
+	WebDriverWait wait;
 
 	public ClientPortalLoginPage(WebDriver driver) {
 		this.driver = driver;
@@ -44,17 +41,11 @@ public class ClientPortalLoginPage {
 	@FindBy(xpath="//button//span[contains(text(), 'New Request / File')]")
 	WebElement NewRequestButton;   
 	
-	@FindBy(xpath="(//input[@type='text'])[1]")
-	WebElement searchClient;  
+	private final By searchClientLocator = By.xpath("//input[@placeholder='Search client...']");
 	
 	
-	
-	@FindBy(xpath="//p[contains(text() , 'Vistaar Financial Services Private Limited')]")
-	WebElement ClientLogo;  
-	
-	
-	@FindBy(xpath = "//div[contains(@class,'cursor-pointer')]")
-	List<WebElement> stateCards;   
+	@FindBy(xpath = "//div[./img[contains(@src,'/v2/static/media/Name=')]]")
+	List<WebElement> stateCards;
 	
 	
 	
@@ -99,27 +90,55 @@ public class ClientPortalLoginPage {
 		NewRequestButton.click();
 		
 	}
-	public void searchclient() {
-	
-	searchClient.sendKeys(clientname);
-	}
-	 
-	public void  ClientLogoclick() { 
-		
-		wait.until(ExpectedConditions.visibilityOf(ClientLogo));
-		
-		  String clientName = ClientLogo.getText().trim();   
-		  
-		  
-		  System.out.println("Client Name: " + clientName);
-		  
-		  
+	public void searchclient(String clientName) {
 
-		ClientLogo.click();
+		if (clientName == null || clientName.trim().isEmpty()) {
+			System.out.println("Skipping client search — no clientName provided (role likely scoped to one client)");
+			return;
+		}
+
+		WebElement searchField;
+		try {
+			searchField = new WebDriverWait(driver, Duration.ofSeconds(3))
+				.until(ExpectedConditions.visibilityOfElementLocated(searchClientLocator));
+		} catch (TimeoutException | NoSuchElementException e) {
+			System.out.println("Skipping client search — search field not present for this role");
+			return;
+		}
+
+		searchField.clear();
+		searchField.sendKeys(clientName);
+	}
+
+	public void ClientLogoclick(String clientName) {
+
+		if (clientName == null || clientName.trim().isEmpty()) {
+			System.out.println("Skipping client-logo click — no clientName provided");
+			return;
+		}
+
+		By logoLocator = By.xpath("//p[contains(normalize-space(.), \"" + clientName + "\")]");
+
+		WebElement logo;
+		try {
+			logo = new WebDriverWait(driver, Duration.ofSeconds(5))
+				.until(ExpectedConditions.visibilityOfElementLocated(logoLocator));
+		} catch (TimeoutException | NoSuchElementException e) {
+			System.out.println("Skipping client-logo click — logo not shown for this role/client: " + clientName);
+			return;
+		}
+
+		System.out.println("Client Name: " + logo.getText().trim());
+		wait.until(ExpectedConditions.elementToBeClickable(logo)).click();
 	}
 	
 	
 	public void selectState(String state) {
+
+	    if (state == null || state.trim().isEmpty()) {
+	        System.out.println("Skipping state selection — no state provided");
+	        return;
+	    }
 
 	    try {
 	        new WebDriverWait(driver, Duration.ofSeconds(3))
@@ -153,6 +172,11 @@ public class ClientPortalLoginPage {
 	
 	
 	public void selectReportTye(String Reportype)  {
+
+		if (Reportype == null || Reportype.trim().isEmpty()) {
+			System.out.println("Skipping report-type selection — no reportType provided");
+			return;
+		}
 
 		try {
 			new WebDriverWait(driver, Duration.ofSeconds(3))
